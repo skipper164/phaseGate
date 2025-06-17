@@ -2,6 +2,7 @@ contact_numb_list  = []
 contact_1st_name_list = []
 contact_last_name_list = []
 
+count = 0
 option = 7
 while (option != 0):
 	print(f"""
@@ -15,12 +16,12 @@ while (option != 0):
 	""")
 
 	option = int (input())
-	count = 0
+	
 	match(option):
 		case 1:
 			while True:
 				print("Add contact")
-				contact_numb = input("enter contact number: ")
+				contact_numb = int (input("enter contact number: "))
 				contact_numb_list.append(contact_numb)
 				contact_1st_name = input("contact first name: ")
 				contact_1st_name_list.append(contact_1st_name)
@@ -36,19 +37,86 @@ while (option != 0):
 				""")
 
 				count +=1
-				add_more = input("your contact have been saved successfuly, do you want to add more? yes/no")
+				add_more = input("your contact have been saved successfuly, do you want to add more? yes/no: ")
 				if(add_more == "no"): break
 
 
 
 
-		case 2: print("Remove contact")
+		case 2:
+			while True:
+				print("Remove contact")
+				for loop in range(len(contact_numb_list)):
+					print(f"{loop} {contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
 
-		case 3: print("Find contact by phone number")
+				remove_contact = int (input("select a contact to remove: "))
+				if(remove_contact > 0): remove_contact -=1
+				del contact_numb_list[remove_contact]
+				del contact_1st_name_list[remove_contact]
+				del contact_last_name_list[remove_contact]
+				print()
+				print(f"{contact_1st_name_list[remove_contact]} {contact_last_name_list[remove_contact]} has been removed")
+				end_remove = input("would you like to remove any other contact? (yes/no):  ")
+				if (end_remove == "no"):break	
+				
 
-		case 4: print("Find contact by first name")
 
-		case 5: print("Find contact by last name")
+
+
+		case 3:
+			while True:
+				print("Find contact by phone number")
+				for loop in range(len(contact_numb_list)):
+					print(f"{contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
+				
+				print()
+				search_cont = int (input("search contact by number: "))
+				for loop in range(len(contact_numb_list)):
+					if(search_cont == contact_numb_list[loop]): 
+						print(f"{contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
+				end_remove = input("would you like to go back to menu? (yes/no):  ")
+				if (end_remove == "no"):break
+
+
+
+
+
+
+		case 4:
+			while True:
+				print("Find contact by first name")
+				for loop in range(len(contact_numb_list)):
+					print(f"{contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
+				
+				print()
+				search_cont = input("search contact by first name: ")
+				for loop in range(len(contact_numb_list)):
+					if(search_cont == contact_1st_name_list[loop]): 
+						print(f"{contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
+				end_remove = input("would you like to go back to menu? (yes/no):  ")
+				if (end_remove == "no"):break
+
+			
+
+
+		case 5:
+			while True:
+				print("Find contact by last name")
+				for loop in range(len(contact_numb_list)):
+					print(f"{contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
+				
+				print()
+				search_cont = input("search contact by last name: ")
+				for loop in range(len(contact_numb_list)):
+					if(search_cont == contact_last_name_list[loop]): 
+						print(f"{contact_1st_name_list[loop]} {contact_last_name_list[loop]} {contact_numb_list[loop]}")
+				end_remove = input("would you like to go back to menu? (yes/no):  ")
+				if (end_remove == "no"):break
+
+
+
+
+
 
 		case 6: print("Edit contact")
 
